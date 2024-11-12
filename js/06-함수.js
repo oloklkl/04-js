@@ -77,7 +77,7 @@ getSecond(animals);
 function print(...num) {
     console.log(num);
 }
-print(1, 2, 3, 4 , 5);
+print(1, 2, 3, 4, 5);
 
 // 화살표 함수
 // function hello() {};
