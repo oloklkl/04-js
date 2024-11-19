@@ -67,20 +67,56 @@ console.log(ame2);
 console.log(latte2);
 
 // 클래스 문법
+// class OrderCoffee {
+//     // 생성자 함수
+//     constructor(name, price) {
+//         this.name = name;
+//         this.price = price;
+//     }
+
+//     // 메소드
+//     printMenu() {
+//         console.log(`${this.name}는 ${this.price}원 입니다.`);
+//     }
+//     making() {
+//         console.log(`${this.name}를 만들고 있습니다.`);
+//     }
+//     made() {
+//         console.log(`${this.name}가 완성되었습니다.`);
+//     }
+// }
+
+// const ame3 = new OrderCoffee('아메리카노', 3500);
+// const latte3 = new OrderCoffee('라떼', 4000);
+
+// ame3.printMenu();
+// ame3.making();
+// ame3.made();
+// latte3.printMenu();
+// latte3.making();
+// latte3.made();
+
+// new OrderCoffee('라떼', 4000).printMenu();
+
+// 클래스 함수란?
 class OrderCoffee {
-    // 생성자 함수
+    // 생성자 함수(객체를 생성)
     constructor(name, price) {
         this.name = name;
         this.price = price;
     }
 
     // 메소드
-    printMenu() {
+    order() {
         console.log(`${this.name}는 ${this.price}원 입니다.`);
     }
+
+    // 메소드2
     making() {
         console.log(`${this.name}를 만들고 있습니다.`);
     }
+
+    // 메소드3
     made() {
         console.log(`${this.name}가 완성되었습니다.`);
     }
@@ -89,11 +125,38 @@ class OrderCoffee {
 const ame3 = new OrderCoffee('아메리카노', 3500);
 const latte3 = new OrderCoffee('라떼', 4000);
 
-ame3.printMenu();
-ame3.making();
+// new OrderCoffee('아메리카노', 3500).order();
+// new OrderCoffee('아메리카노').making();
+// new OrderCoffee('아메리카노').made();
+
 ame3.made();
-latte3.printMenu();
+
+latte3.order();
 latte3.making();
 latte3.made();
 
-new OrderCoffee('라떼', 4000).printMenu();
+// 클래스 상속
+class SpecialCoffee extends OrderCoffee {
+    // 생성자 함수
+    constructor(name, price, character) {
+        super(name, price);
+        this.character = character;
+    }
+
+    // 메소드
+    order() {
+        console.log(`${this.character} ${this.name}는 ${this.price + 1500}원 입니다.`);
+    }
+
+    // 메소드2
+    limited() {
+        console.log(`${this.character} ${this.name}는 11월 한정판매합니다.`);
+    }
+}
+
+const ame3S = new OrderCoffee('아메리카노', 3500, '미니언즈');
+
+// new SpecialCoffee('아메리카노', 3500, '미니언즈').order();
+// new SpecialCoffee('아메리카노', 3500, '미니언즈').limited();
+
+ame3S.order();

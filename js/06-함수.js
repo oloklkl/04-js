@@ -2,30 +2,27 @@
 // 1. 함수 선언하기
 // 함수 선언식
 
-hello1();   // 함수 호출
+hello1(); // 함수 호출
 
 function hello1() {
-    console.log("hello1");
+    console.log('hello1');
 }
 
 // 함수 표현식
-const hello2 = function() {
-    console.log("hello2");
-}
+const hello2 = function () {
+    console.log('hello2');
+};
 
-
-hello2();   // 함수 호출
-
+hello2(); // 함수 호출
 
 // return
 // 함수를 호출한 곳으로 값을 반환 및 종료
 
 function h1() {
-    return "hello";
-    console.log("world");   // 실행되지 않음
+    return 'hello';
+    console.log('world'); // 실행되지 않음
 }
 console.log(h1());
-
 
 function h2() {
     return;
@@ -33,9 +30,9 @@ function h2() {
 console.log(h2());
 
 function h3() {
-    console.log("hello");
+    console.log('hello');
     return 1;
-    return 2;   // 실행되지 않음
+    return 2; // 실행되지 않음
 }
 console.log(h3());
 
@@ -49,10 +46,10 @@ console.log(sum(5));
 // 함수의 구조 분해
 // 객체 분해
 const user = {
-    name: "윈터",
+    name: '윈터',
     age: 24,
 };
-function getName({name, age, email = "이메일이 없습니다."}) {
+function getName({ name, age, email = '이메일이 없습니다.' }) {
     // const {name, age} = props;
     console.log(name);
     // 윈터는 24살 입니다.
@@ -63,11 +60,9 @@ getName(user);
 
 // 배열 분해
 const animals = ['dog', , 'panda'];
-function getSecond([, b = "없음"]) {
-
+function getSecond([, b = '없음']) {
     // const arr = ['dog', 'cat', 'panda'];
     // const [, b] = arr;
-
 
     console.log(b);
 }
@@ -87,21 +82,86 @@ print(1, 2, 3, 4, 5);
 // hello3();
 
 const hello4 = () => {
-    console.log("hello4");
+    console.log('hello4');
 };
 hello4();
 
 // 화살표 함수의 축약
 const a = () => {};
-const b = x => {};
+const b = (x) => {};
 const c = (x, y) => {};
-const d = (x, y) =>  x + y ;
+const d = (x, y) => x + y;
 const e = (x, y) => {
-    console.log("hello");
+    console.log('hello');
     return x + y;
-}
-const f = () => ({name : "윈터"});
+};
+const f = () => ({ name: '윈터' });
 const g = () => [1, 2, 3];
-const h = () => {}
-const i = () => {}
-const j = () => {}
+const h = () => {};
+const i = () => {};
+const j = () => {};
+
+// 3초 후에 콘솔창
+
+setTimeout(() => {
+    console.log('3초 뒤에 실행됩니다.');
+}, 3000);
+
+// clearTimeout을 사용하여 setTimeout를 취소할 수 있습니다.
+// .btn1을 클릭했을 때
+
+// document.querySelector('.btn1').addEventListener('clock', () => {
+//     console.log('버튼이 클릭되었습니다.');
+//     clearTimeout();
+// });
+
+// clearTimeout을 사용하여 setTimeout를 취소하고
+// 콘솔창에 'setTimeout이 취소되었습니다.' 를 출력하세요.
+
+// 콜백 함수
+// 원하는 시점에 호출되도록 설정할 수 있는 함수
+
+const aa = (callback) => {
+    // b함수를 실행
+    callback();
+    console.log('a');
+};
+const bb = () => {
+    console.log('b');
+};
+
+aa(bb); // b 인수전달
+
+// this
+
+// 일반 함수 this
+// 일반 함수: 호출 위치에서 this 가 결정된다.
+// 화살표 함수: 자신이 선언된 함수 범위에서 this가 결정된다.
+
+function userss() {
+    this.firstName = '윈터';
+    this.lastName = '이';
+
+    return {
+        getFullName: () => {
+            return `${this.lastName} ${this.firstName}`;
+        },
+    };
+}
+
+const user2 = userss();
+console.log(user2.getFullName());
+
+const obj2 = {
+    firstName: '윈터',
+    lastName: '이',
+    // 메서드
+    // fullName() {
+    //     return `${this.lastName} ${this.firstName}`;
+    // },
+    fullName: () => {
+        return `${this.lastName} ${this.firstName}`;
+    },
+};
+
+console.log(obj2.fullName()); // 이원터
